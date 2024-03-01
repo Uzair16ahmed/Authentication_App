@@ -15,14 +15,14 @@ module.exports = async (req, res, next) => {
 
         // console.log("user", user)
         // pass the user down to the endpoints here
-        request.user = user;
+        req.user = user;
 
-        console.log("request.user", request.user)
+        console.log("request.user", req.user)
         // pass down functionality to the endpoint
         next();
     } catch (error) {
         res.status(401).json({
-            message:"Error",
+            message:"Authentication Error",
             error: new Error("Invalid request!"),
         });
     }
